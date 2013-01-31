@@ -1,8 +1,12 @@
+SUBDIRS = . plugins
+
 jalakincludedir = $(includedir)
 jalakinclude_HEADERS = include/jalak.h
 
 AM_CPPFLAGS = $(JALAK_CFLAGS) \
 	      -I$(top_srcdir)/include
+
+DEFS += -DPLUGINDIR=\"$(plugindir)\"
 
 VALAFLAGS=--pkg gio-2.0 \
 	  --pkg gmodule-2.0 \
@@ -19,7 +23,12 @@ VALAFLAGS=--pkg gio-2.0 \
 
 bin_PROGRAMS = jalak
 
-jalak_SOURCES = src/main.vala 
+jalak_SOURCES = src/main.vala \
+	  src/page.vala \
+	  src/app.vala \
+	  src/util.vala \
+	  src/js/app.vala \
+	  src/plugins/plugins.vala 
 
 jalak_LDADD = $(JALAK_LIBS)
 

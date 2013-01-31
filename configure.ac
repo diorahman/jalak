@@ -17,6 +17,9 @@ GLIB_REQUIRED=2.32
 AC_DEFINE_UNQUOTED(PUBLICDIR, "$PWD/public", [Static assests root directory])
 AC_SUBST(PUBLICDIR)
 
+plugindir="${pwd}/jalak"
+AC_SUBST(plugindir)
+
 PKG_PROG_PKG_CONFIG([0.24])
 PKG_CHECK_MODULES(JALAK, glib-2.0 >= $GLIB_REQUIRED
 		  gmodule-2.0 >= $GLIB_REQUIRED
@@ -26,6 +29,10 @@ PKG_CHECK_MODULES(JALAK, glib-2.0 >= $GLIB_REQUIRED
 		  libpeas-1.0
 )
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile
+		  plugins/Makefile
+		  plugins/foo/Makefile
+		  ])
+
 
 AC_OUTPUT
