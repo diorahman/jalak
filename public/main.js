@@ -19,7 +19,10 @@ define(['module'], function (module) {
 		
 		document.getElementById('unload').onclick = function(){ 
 			app.unloadPlugin(plugins[0], function(err, obj){
-	    		foo.destroy(function(){})
+	    		foo.destroy(function(){
+	    			require.undef(['plugins/foo'])
+	    		})
+
 			})
 
 		}
@@ -27,9 +30,11 @@ define(['module'], function (module) {
 
 	/*
 		TODO
-		foo in global context
-		OR
-		of app.plugin('foo').command('bar', args);
+		e.g  for foo plugin:
+
+		using foo in global context
+		OR - AND
+		using app.plugin('foo').command('bar', args);
 
 		update js from vala
 	*/
